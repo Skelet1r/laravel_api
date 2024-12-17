@@ -9,4 +9,9 @@ Route::get('/', function () {
 });
 
 
-Route::get('warehouses', [WarehouseController::class, 'warehouses'])->name('warehouses');
+
+
+Route::controller(WarehouseController::class)->group(function () {
+    Route::get('/warehouses', 'warehouses')->name('warehouses');
+    Route::get('/warehouses_pagination', 'warehouses_pagination')->name('warehouses_pagination');
+});

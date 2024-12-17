@@ -10,12 +10,13 @@ use App\Models\Warehouse;
 
 class WarehouseController extends Controller
 {
-    public function warehouses(Request $request){
+    public function warehouses(){
 
-        $url = 'http://89.108.115.241:6969/api/stocks?dateFrom=2024-12-17&dateTo=&page=9&limit=100&key=E6kUTYrYwZq2tN4QEtyzsbEBk3ie';
+        $url = 'http://89.108.115.241:6969/api/stocks?dateFrom=2024-12-17&dateTo=&page=1&limit=100&key=E6kUTYrYwZq2tN4QEtyzsbEBk3ie';
 
         $response = Http::get($url);
         $data = $response->json();
+
 
         foreach ($data['data'] as $item){
             DB::table('warehouses')->insert([
@@ -38,6 +39,44 @@ class WarehouseController extends Controller
                 'sc_code' => $item['sc_code'],
                 'price' => $item['price'],
                 'discount' => $item['discount']
+            ]);
+        }
+
+        return response()->json([
+            'message' => 'Data saved successfully!'
+        ]);
+    }
+
+
+    public function warehouses_pagination(){
+        $url = 'http://89.108.115.241:6969/api/stocks?dateFrom=2024-12-17&dateTo=&page=1&limit=100&key=E6kUTYrYwZq2tN4QEtyzsbEBk3ie';
+
+        $response = Http::get($url);
+        $data = $response->json();
+
+
+        $paginationData = $data['meta'];
+
+
+        $paginationId = DB::table('warehouses_pagination')->insertGetId([
+            'current_page' => $paginationData['current_page'],
+            'last_page' => $paginationData['last_page'],
+            'from' => $paginationData['from'],
+            'to' => $paginationData['to'],
+            'total' => $paginationData['total'],
+            'per_page' => $paginationData['per_page'],
+            'path' => $paginationData['path'],
+
+        ]);
+
+        foreach ($paginationData['links'] as $link) {
+            DB::table('warehouses_pagination_links')->insert([
+                'url' => $link['url'],
+                'label' => $link['label'],
+                'active' => $link['active'],
+                'pagination_id' => $paginationId,
+                'created_at' => now(),
+                'updated_at' => now()
             ]);
         }
 
