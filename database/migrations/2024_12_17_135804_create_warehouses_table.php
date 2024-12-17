@@ -13,9 +13,25 @@ return new class extends Migration
     {
         Schema::create('warehouses', function (Blueprint $table) {
             $table->id();
-            $table->date('dateFrom');
+            $table->date('date');
+            $table->date('last_change_date')->nullable();
+            $table->string('supplier_article')->nullable();
+            $table->string('tech_size')->nullable();
+            $table->integer('barcode');
+            $table->integer('quantity');
+            $table->boolean('is_supply')->nullable();
+            $table->boolean('is_realization')->nullable();
+            $table->integer('quantity_full')->nullable();
             $table->string('warehouse_name');
-            $table->integer('price');
+            $table->integer('in_way_to_client')->nullable();
+            $table->integer('in_way_from_client')->nullable();
+            $table->integer('nm_id');
+            $table->string('subject')->nullable();
+            $table->string('category')->nullable();
+            $table->string('brand')->nullable();
+            $table->integer('sc_code')->nullable();
+            $table->string('price');
+            $table->string('discount');
             $table->timestamps();
         });
     }
