@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('warehouses_pagination_links', function (Blueprint $table) {
             $table->id();
-            $table->string('url');
+            $table->string('url')->nullable();
             $table->string('label');
             $table->boolean('active');
             $table->unsignedBigInteger('pagination_id');
