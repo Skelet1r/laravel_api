@@ -30,7 +30,7 @@ return new class extends Migration
             $table->string('category');
             $table->string('brand');
             $table->boolean('is_cancel');
-            $table->boolean('cancel_dt')->nullable();
+            $table->date('cancel_dt')->nullable();
             $table->timestamps();
         });
     }
