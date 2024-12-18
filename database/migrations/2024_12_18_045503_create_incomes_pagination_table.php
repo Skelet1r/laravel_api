@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('incomes_pagination', function (Blueprint $table) {
             $table->id();
+            $table->integer('current_page');
+            $table->integer('last_page');
+            $table->integer('from');
+            $table->integer('to');
+            $table->integer('total');
+            $table->string('per_page');
+            $table->string('path');
             $table->timestamps();
         });
     }

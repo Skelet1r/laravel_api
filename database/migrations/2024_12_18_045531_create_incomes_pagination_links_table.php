@@ -13,7 +13,14 @@ return new class extends Migration
     {
         Schema::create('incomes_pagination_links', function (Blueprint $table) {
             $table->id();
+            $table->string('url')->nullable();
+            $table->string('label');
+            $table->boolean('active');
+            $table->unsignedBigInteger('pagination_id');
             $table->timestamps();
+            $table->foreign('pagination_id')
+                  ->references('id')->on('incomes_pagination')
+                  ->onDelete('cascade');
         });
     }
 
