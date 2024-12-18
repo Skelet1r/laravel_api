@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\IncomesController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\SalesController;
 use App\Http\Controllers\WarehouseController;
 use App\Models\Warehouse;
 use Illuminate\Support\Facades\Route;
@@ -26,4 +27,9 @@ Route::controller(OrderController::class)->group(function () {
 Route::controller(IncomesController::class)->group(function ()  {
     Route::get('/incomes', 'incomes')->name('incomes');
     Route::get('/incomes_pagination', 'incomes_pagination')->name('incomes_pagination');
+});
+
+Route::controller(SalesController::class)->group(function () {
+    Route::get('/sales', 'sales')->name('sales');
+    Route::get('/sales_pagination', 'sales_pagination')->name('sales_pagination');
 });
