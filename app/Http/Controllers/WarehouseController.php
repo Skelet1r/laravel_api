@@ -12,7 +12,7 @@ class WarehouseController extends Controller
 {
     public function warehouses(){
 
-        $url = 'http://89.108.115.241:6969/api/stocks?dateFrom=2024-12-18&dateTo=&page=16&limit=100&key=E6kUTYrYwZq2tN4QEtyzsbEBk3ie';
+        $url = 'http://89.108.115.241:6969/api/stocks?dateFrom=2024-12-18&dateTo=&page=4&limit=100&key=E6kUTYrYwZq2tN4QEtyzsbEBk3ie';
 
         $response = Http::get($url);
         $data = $response->json();
@@ -84,4 +84,6 @@ class WarehouseController extends Controller
             'message' => 'Data saved successfully!'
         ]);
     }
+
+
 }
