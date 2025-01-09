@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Http;
 class OrderController extends Controller
 {
     public function orders(){
-        $url = 'http://89.108.115.241:6969/api/orders?dateFrom=2024-11-01&dateTo=2024-11-15&page=10&key=E6kUTYrYwZq2tN4QEtyzsbEBk3ie&limit=500';
+        $url = 'http://89.108.115.241:6969/api/orders?dateFrom=2025-01-01&dateTo=2025-01-09&page=8&key=E6kUTYrYwZq2tN4QEtyzsbEBk3ie&limit=500';
 
         $response = Http::get($url);
         $data = $response->json();
@@ -43,7 +43,7 @@ class OrderController extends Controller
     }
 
     public function orders_pagination(){
-        $url = 'http://89.108.115.241:6969/api/orders?dateFrom=2024-11-01&dateTo=2024-11-15&page=10&key=E6kUTYrYwZq2tN4QEtyzsbEBk3ie&limit=500';
+        $url = 'http://89.108.115.241:6969/api/orders?dateFrom=2025-01-01&dateTo=2025-01-09&page=1&key=E6kUTYrYwZq2tN4QEtyzsbEBk3ie&limit=500';
 
         $response = Http::get($url);
         $data = $response->json();

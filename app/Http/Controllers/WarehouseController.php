@@ -12,7 +12,7 @@ class WarehouseController extends Controller
 {
     public function warehouses(){
 
-        $url = 'http://89.108.115.241:6969/api/stocks?dateFrom=2024-12-18&dateTo=&page=4&limit=500&key=E6kUTYrYwZq2tN4QEtyzsbEBk3ie';
+        $url = 'http://89.108.115.241:6969/api/stocks?dateFrom=2025-01-09&page=4&key=E6kUTYrYwZq2tN4QEtyzsbEBk3ie&limit=500';
 
         $response = Http::get($url);
         $data = $response->json();
@@ -49,7 +49,7 @@ class WarehouseController extends Controller
 
 
     public function warehouses_pagination(){
-        $url = 'http://89.108.115.241:6969/api/stocks?dateFrom=2024-12-18&dateTo=&page=4&limit=500&key=E6kUTYrYwZq2tN4QEtyzsbEBk3ie';
+        $url = 'http://89.108.115.241:6969/api/stocks?dateFrom=2025-01-09&page=1&key=E6kUTYrYwZq2tN4QEtyzsbEBk3ie&limit=500';
 
         $response = Http::get($url);
         $data = $response->json();
